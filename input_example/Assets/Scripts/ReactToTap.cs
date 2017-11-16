@@ -16,30 +16,23 @@ using UnityEngine;
 // class definition.
 using HoloToolkit.Unity.InputModule;
 
-
 // In this example, we will be listening for events defined in the
 // IInputClickHandler class, so we add that after 'MonoBehavior'
 
 public class ReactToTap : MonoBehaviour, IInputClickHandler {
-  
-  void Start() {
-    // This gets called once when the script loads
-  }
+    
+    // To listen for events, we MUST have a version in our script
+    // of all of the functions that go with that event. If you 
+    // look in: Assets/HoloToolkit/Input/Scripts/InputEvents/IInputClickHandler.cs
+    // you will see one function defined as the interface: OnInputClicked(InputClickedEventData eventData).
+    // We MUST create a public version of this function in our script 
+    // to listen for this event.
 
-  void Update() {
-    // This gets called 60x per second
-  }
+    public void OnInputClicked(InputClickedEventData eventData) {
+        // This gets called if the user performs an air-tap while the 
+        // gaze cursor is over the GameObject that this script is attached to.
+        Debug.Log("I was tapped!");
+        transform.Rotate(0f, Random.Range(0f, 180f), 0f);
+    }
 
-  // To listen for events, we MUST have a version in our script
-  // of all of the functions that go with that event. If you 
-  // look in: Assets/HoloToolkit/Input/Scripts/InputEvents/IInputClickHandler.cs
-  // you will see one function defined as the interface: OnInputClicked(InputClickedEventData eventData).
-  // We MUST create a public version of this function in our script 
-  // to listen for this event.
-
-  public void OnInputClicked(InputClickedEventData eventData) {
-    // This gets called if the user performs an air-tap while the 
-    // gaze cursor is over the GameObject that this script is attached to.
-    Debug.Log("I was tapped!");
-  }
 }

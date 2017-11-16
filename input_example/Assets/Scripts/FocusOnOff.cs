@@ -16,37 +16,30 @@ using UnityEngine;
 // class definition.
 using HoloToolkit.Unity.InputModule;
 
-
 // In this example, we will be listening for events defined in the
-// IFocusable class, so we add that after 'MonoBehavior'
+// IFocusable class, so we add that after 'MonoBehaviour'
 
 public class FocusOnOff : MonoBehaviour, IFocusable {
 
-  void Start() {
-	  // This gets called once when the script loads
-  }
+    // To listen for events, we MUST have a version in our script
+    // of all of the functions that go with that event. If you 
+    // look in: Assets/HoloToolkit/Input/Scripts/InputEvents/IFocusable.cs
+    // you will see two functions defined as the interface: OnFocusEnter() and OnFocusExit().
+    // We MUST create public versions of these functions in our script 
+    // to listen for this event.
 
-  void Update() {
-	  // This gets called 60x per second
-  }
+    public void OnFocusEnter() {
+        // This gets called when the HoloLens gaze cursor moves onto the
+        // GameObject that this script is attached to.
+        Debug.Log("Cursor On!");
+        transform.Rotate(0f, Random.Range(0f, 180f), 0f);
+    }
 
+    public void OnFocusExit() {
+        // This gets called when the HoloLens gaze cursor moves off of the
+        // GameObject that this script is attached to.
+        Debug.Log("Cursor Off!");
+        transform.rotation = Quaternion.identity;
+    }
 
-  // To listen for events, we MUST have a version in our script
-  // of all of the functions that go with that event. If you 
-  // look in: Assets/HoloToolkit/Input/Scripts/InputEvents/IFocusable.cs
-  // you will see two functions defined as the interface: OnFocusEnter() and OnFocusExit().
-  // We MUST create public versions of these functions in our script 
-  // to listen for this event.
-
-  public void OnFocusEnter() {
-    // This gets called when the HoloLens gaze cursor moves onto the
-    // GameObject that this script is attached to.
-    Debug.Log("Cursor On!");
-  }
-
-  public void OnFocusExit() {
-    // This gets called when the HoloLens gaze cursor moves off of the
-    // GameObject that this script is attached to.
-    Debug.Log("Cursor Off!");
-  }
 }
