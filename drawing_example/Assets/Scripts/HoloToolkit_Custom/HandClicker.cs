@@ -6,7 +6,7 @@ public class HandClicker : MonoBehaviour {
 
     public Transform tracker;
     public HoloLensHandTracking.HandsTrackingController hands;
-    public HoloToolkit.Unity.InputModule.AnimatedCursor cursor;
+    //public HoloToolkit.Unity.InputModule.AnimatedCursor cursor;
     public bool handDown = false;
     public bool handPressed = false;
     public bool handUp = false;
@@ -17,7 +17,8 @@ public class HandClicker : MonoBehaviour {
         handDown = false;
         handUp = false;
 
-        if ("" + cursor.CursorState == "Select") {
+        /*
+        if ("" + cursor.CursorState == "Select") { 
             if (!handPressed) {
                 handDown = true;
                 debugHand();
@@ -30,6 +31,7 @@ public class HandClicker : MonoBehaviour {
             }
             handPressed = false;
         }
+        */
 
         try {
             pos = Vector3.Lerp(pos, hands.lastPos, smoothing);
