@@ -5,7 +5,8 @@ using UnityEngine;
 public class BrushInputHoloLens : MonoBehaviour {
 
     public LightningArtist latk;
-    public HandClicker handClicker;
+    public HoloLensHandTracking.HandsTrackingController hands;
+    public float smoothing = 0.5f;
     public int startingFrames = 12;
 
     private bool firstRun = true;
@@ -23,7 +24,11 @@ public class BrushInputHoloLens : MonoBehaviour {
             firstRun = false;
         }
 
-        latk.clicked = handClicker.handPressed;
+        try {
+            latk.target.position = Vector3.Lerp(latk.target.position, hands.lastPos, smoothing);
+        } catch (UnityException e) { }
+
+        latk.clicked = hands.handPressed;
     }
 
 }

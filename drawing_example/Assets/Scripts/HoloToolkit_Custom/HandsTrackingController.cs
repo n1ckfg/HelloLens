@@ -23,19 +23,24 @@ namespace HoloLensHandTracking
             get { return trackedHands.Count > 0; }
         }
 
-        public HandClicker handClicker;
         public GameObject TrackingObject;
         public TextMesh StatusText;
         public Color DefaultColor = Color.green;
         public Color TapColor = Color.blue;
         public Color HoldColor = Color.red;
+        public Color ClickColor = new Color(1f, 0.5f, 0f);
+
+        [HideInInspector] public bool handDown = false;
+        [HideInInspector] public bool handPressed = false;
+        [HideInInspector] public bool handUp = false;
+        [HideInInspector] public Vector3 lastPos;
 
         private HashSet<uint> trackedHands = new HashSet<uint>();
         private Dictionary<uint, GameObject> trackingObject = new Dictionary<uint, GameObject>();
         private GestureRecognizer gestureRecognizer;
         private uint activeId;
 
-        void Awake()
+        private void Awake()
         {
             InteractionManager.InteractionSourceDetected += InteractionManager_InteractionSourceDetected;
             InteractionManager.InteractionSourceUpdated += InteractionManager_InteractionSourceUpdated;
@@ -53,7 +58,13 @@ namespace HoloLensHandTracking
             StatusText.text = "READY";
         }
 
-        void ChangeObjectColor(GameObject obj, Color color)
+        private void Update()
+        {
+            handDown = false;
+            handUp = false;
+        }
+
+        private void ChangeObjectColor(GameObject obj, Color color)
         {            
             var rend = obj.GetComponentInChildren<Renderer>();
             if (rend)
@@ -70,7 +81,7 @@ namespace HoloLensHandTracking
             StatusText.text = $"HoldStarted - Kind:{args.source.kind.ToString()} - Id:{id}";
             if (trackingObject.ContainsKey(activeId))
             {
-                //ChangeObjectColor(trackingObject[activeId], HoldColor);
+                ChangeObjectColor(trackingObject[activeId], HoldColor);
                 StatusText.text += "-TRACKED";
             }
         }
@@ -81,7 +92,7 @@ namespace HoloLensHandTracking
             StatusText.text = $"HoldCompleted - Kind:{args.source.kind.ToString()} - Id:{id}";
             if(trackingObject.ContainsKey(activeId))
             {
-                //ChangeObjectColor(trackingObject[activeId], DefaultColor);
+                ChangeObjectColor(trackingObject[activeId], DefaultColor);
                 StatusText.text += "-TRACKED";
             }
         }
@@ -92,7 +103,7 @@ namespace HoloLensHandTracking
             StatusText.text = $"HoldCanceled - Kind:{args.source.kind.ToString()} - Id:{id}";
             if (trackingObject.ContainsKey(activeId))
             {
-                //ChangeObjectColor(trackingObject[activeId], DefaultColor);
+                ChangeObjectColor(trackingObject[activeId], DefaultColor);
                 StatusText.text += "-TRACKED";
             }
         }
@@ -103,7 +114,7 @@ namespace HoloLensHandTracking
             StatusText.text = $"Tapped - Kind:{args.source.kind.ToString()} - Id:{id}";
             if (trackingObject.ContainsKey(activeId))
             {
-                //ChangeObjectColor(trackingObject[activeId], TapColor);
+                ChangeObjectColor(trackingObject[activeId], TapColor);
                 StatusText.text += "-TRACKED";
             }
         }
@@ -126,7 +137,7 @@ namespace HoloLensHandTracking
             if (args.state.sourcePose.TryGetPosition(out pos))
             {
                 obj.transform.position = pos;
-                handClicker.lastPos = pos;
+                lastPos = pos;
             }
 
             trackingObject.Add(id, obj);
@@ -145,7 +156,7 @@ namespace HoloLensHandTracking
                     if (args.state.sourcePose.TryGetPosition(out pos))
                     {
                         trackingObject[id].transform.position = pos;
-                        handClicker.lastPos = pos;
+                        lastPos = pos;
                     }
 
                     if (args.state.sourcePose.TryGetRotation(out rot))
@@ -184,13 +195,13 @@ namespace HoloLensHandTracking
 
         private void InteractionManager_InteractionSourcePressed(InteractionSourcePressedEventArgs args)
         {
-            handClicker.beginClick();
-            ChangeObjectColor(trackingObject[activeId], HoldColor);
+            beginClick();
+            ChangeObjectColor(trackingObject[activeId], ClickColor);
         }
 
         private void InteractionManager_InteractionSourceReleased(InteractionSourceReleasedEventArgs args)
         {
-            handClicker.endClick();
+            endClick();
             ChangeObjectColor(trackingObject[activeId], DefaultColor);
         }
 
@@ -208,5 +219,32 @@ namespace HoloLensHandTracking
             gestureRecognizer.HoldCanceled -= GestureRecognizer_HoldCanceled;
             gestureRecognizer.StopCapturingGestures();
         }
+
+        public void debugHand()
+        {
+            Debug.Log("Hand DOWN: " + handDown + ", UP: " + handUp);
+        }
+
+        public void beginClick()
+        {
+            if (!handPressed)
+            {
+                handDown = true;
+                debugHand();
+            }
+            handPressed = true;
+        }
+
+        public void endClick()
+        {
+            if (handPressed)
+            {
+                handUp = true;
+                debugHand();
+            }
+            handPressed = false;
+        }
+
     }
+
 }
