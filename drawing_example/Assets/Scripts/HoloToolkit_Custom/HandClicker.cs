@@ -12,35 +12,37 @@ public class HandClicker : MonoBehaviour {
     public bool handUp = false;
     public Vector3 pos = Vector3.zero;
     public float smoothing = 0.5f;
-    
-    private void Update () {
+
+    [HideInInspector] public Vector3 lastPos;
+
+    private void Update() {
         handDown = false;
         handUp = false;
 
-        /*
-        if ("" + cursor.CursorState == "Select") { 
-            if (!handPressed) {
-                handDown = true;
-                debugHand();
-            }
-            handPressed = true;
-        } else {
-            if (handPressed) {
-                handUp = true;
-                debugHand();
-            }
-            handPressed = false;
-        }
-        */
-
         try {
-            pos = Vector3.Lerp(pos, hands.lastPos, smoothing);
+            pos = Vector3.Lerp(pos, lastPos, smoothing);
             tracker.position = pos;
         } catch (UnityException e) { }
 	}
 
-    void debugHand() {
+    public void debugHand() {
         Debug.Log("Hand DOWN: " + handDown + ", UP: " + handUp);
+    }
+
+    public void beginClick() {
+        if (!handPressed) {
+            handDown = true;
+            debugHand();
+        }
+        handPressed = true;
+    }
+
+    public void endClick() {
+        if (handPressed) {
+            handUp = true;
+            debugHand();
+        }
+        handPressed = false;
     }
 
 }
