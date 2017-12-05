@@ -17,9 +17,11 @@ public class ClickExample : MonoBehaviour {
     }
 
 	private void Update() {
-		if (ctl.isLookingAt == gameObject.name && handMgr.handDown) {
+		if (ctl.isLookingAt == gameObject.name && handMgr.handPressed) {
             doRot = true;
-        } else if (!handMgr.handPressed) {
+        }
+
+        if (!handMgr.handPressed) {
             doRot = false;
         }
 
