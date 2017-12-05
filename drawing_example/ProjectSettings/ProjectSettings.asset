@@ -599,7 +599,7 @@ PlayerSettings:
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
   metroCertificateNotAfter: 80da42e63589d401
-  metroApplicationDescription: Gestures1
+  metroApplicationDescription: NFG demo - draw lines in space
   wsaImages: {}
   metroTileShortName: Gestures1
   metroCommandLineArgsFile: 
@@ -635,7 +635,7 @@ PlayerSettings:
       Proximity: False
       RemovableStorage: False
       SharedUserCertificates: False
-      SpatialPerception: False
+      SpatialPerception: True
       UserAccountInformation: False
       VideosLibrary: False
       VoipCall: False
