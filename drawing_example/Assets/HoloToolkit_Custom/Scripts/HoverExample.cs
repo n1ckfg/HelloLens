@@ -9,7 +9,7 @@ public class HoverExample : MonoBehaviour {
     private BasicController ctl;
 
     private void Awake() {
-        ctl = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<BasicController>();
+        ctl = Camera.main.GetComponent<BasicController>();
     }
 
     private void Update() {

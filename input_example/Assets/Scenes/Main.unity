@@ -751,63 +751,102 @@ MonoBehaviour:
   m_GameObject: {fileID: 343001560}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55680b628bda8e449b3966113545b0ec, type: 3}
+  m_Script: {fileID: 11500000, guid: b110777728bb06c47925dcd9c93f2045, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rot: {x: 10, y: 0, z: 0}
+  rot: {x: 3, y: 0, z: 0}
   doRot: 0
---- !u!1001 &984877169
+--- !u!1001 &796519973
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4860549430597764, guid: 0bd98394d1d3306488134de39dd8c927, type: 2}
+    - target: {fileID: 4860549430597764, guid: ed3bdf89dbb166b4a855ee94315e6295, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4860549430597764, guid: 0bd98394d1d3306488134de39dd8c927, type: 2}
+    - target: {fileID: 4860549430597764, guid: ed3bdf89dbb166b4a855ee94315e6295, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4860549430597764, guid: 0bd98394d1d3306488134de39dd8c927, type: 2}
+    - target: {fileID: 4860549430597764, guid: ed3bdf89dbb166b4a855ee94315e6295, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4860549430597764, guid: 0bd98394d1d3306488134de39dd8c927, type: 2}
+    - target: {fileID: 4860549430597764, guid: ed3bdf89dbb166b4a855ee94315e6295, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4860549430597764, guid: 0bd98394d1d3306488134de39dd8c927, type: 2}
+    - target: {fileID: 4860549430597764, guid: ed3bdf89dbb166b4a855ee94315e6295, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4860549430597764, guid: 0bd98394d1d3306488134de39dd8c927, type: 2}
+    - target: {fileID: 4860549430597764, guid: ed3bdf89dbb166b4a855ee94315e6295, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4860549430597764, guid: 0bd98394d1d3306488134de39dd8c927, type: 2}
+    - target: {fileID: 4860549430597764, guid: ed3bdf89dbb166b4a855ee94315e6295, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4860549430597764, guid: 0bd98394d1d3306488134de39dd8c927, type: 2}
+    - target: {fileID: 4860549430597764, guid: ed3bdf89dbb166b4a855ee94315e6295, type: 2}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114693029835716632, guid: 0bd98394d1d3306488134de39dd8c927,
+    - target: {fileID: 114693029835716632, guid: ed3bdf89dbb166b4a855ee94315e6295,
         type: 2}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 0bd98394d1d3306488134de39dd8c927, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: ed3bdf89dbb166b4a855ee94315e6295, type: 2}
   m_IsPrefabParent: 0
 --- !u!102 &1000671704 stripped
 TextMesh:
   m_PrefabParentObject: {fileID: 102279360617629144, guid: 2a67f4cfb65fc0a4ab995c837bad64da,
     type: 2}
   m_PrefabInternal: {fileID: 1732798952}
+--- !u!1 &1401243083 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1014098578049944, guid: 2a67f4cfb65fc0a4ab995c837bad64da,
+    type: 2}
+  m_PrefabInternal: {fileID: 1732798952}
+--- !u!114 &1401243084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1401243083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef4c976989243647855e7301a602b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useKeyboard: 0
+  useYAxis: 0
+  yAxisName: Vertical2
+  walkSpeed: 10
+  runSpeed: 100
+  accel: 0.01
+  homePoint: {fileID: 0}
+  useMouse: 0
+  showCursor: 0
+  useButton: 1
+  axes: 0
+  sensitivityX: 2
+  sensitivityY: 2
+  mousePos: {x: 0, y: 0, z: 0}
+  clicked: 0
+  isDrawing: 0
+  useRaycaster: 1
+  followMouse: 0
+  debugRaycaster: 0
+  isLooking: 0
+  isLookingAt: 
+  lastHitPos: {x: 1, y: 1, z: 1}
+  useCollisions: 0
 --- !u!1 &1412873371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,10 +1079,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1664720226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55680b628bda8e449b3966113545b0ec, type: 3}
+  m_Script: {fileID: 11500000, guid: b110777728bb06c47925dcd9c93f2045, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rot: {x: 10, y: 0, z: 0}
+  rot: {x: 3, y: 0, z: 0}
   doRot: 0
 --- !u!1001 &1732798952
 Prefab:
@@ -1593,8 +1632,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2127385091}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55680b628bda8e449b3966113545b0ec, type: 3}
+  m_Script: {fileID: 11500000, guid: b110777728bb06c47925dcd9c93f2045, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rot: {x: 10, y: 0, z: 0}
+  rot: {x: 3, y: 0, z: 0}
   doRot: 0

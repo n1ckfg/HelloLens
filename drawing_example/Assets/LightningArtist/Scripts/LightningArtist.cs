@@ -458,6 +458,10 @@ public class LightningArtist : MonoBehaviour {
 		url = Path.Combine("file://" + Application.dataPath, readFileName);		
 #endif
 
+#if UNITY_WSA
+		url = Path.Combine("file://" + Application.dataPath, readFileName);		
+#endif
+
         WWW www = new WWW(url);
         yield return www;
 

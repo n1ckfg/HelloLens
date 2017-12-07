@@ -146,18 +146,22 @@ public class TimeDraw : LADrawing {
 		#endif
 
 		#if UNITY_EDITOR
-		url = Path.Combine("file://" + Application.dataPath, readFileName);		
-		#endif 
+		url = Path.Combine("file://" + Application.dataPath, readFileName);
+#endif
 
-		#if UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WIN
 		url = Path.Combine("file://" + Application.dataPath, readFileName);		
-		#endif 
+#endif
 
-		#if UNITY_STANDALONE_OSX
+#if UNITY_STANDALONE_OSX
 		url = Path.Combine("file://" + Application.dataPath, readFileName);		
-		#endif 
+#endif
 
-		WWW www = new WWW(url);
+#if UNITY_WSA
+        url = Path.Combine("file://" + Application.dataPath, readFileName);
+#endif
+
+        WWW www = new WWW(url);
 		yield return www;
 
 		Debug.Log ("+++ File reading finished. Begin parsing...");
