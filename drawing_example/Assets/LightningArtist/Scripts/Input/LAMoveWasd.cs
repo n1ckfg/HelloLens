@@ -6,8 +6,9 @@ public class LAMoveWasd : MonoBehaviour {
 	public float walkSpeed = 2.0f;
 	public float runSpeed = 20.0f;
 	public float accel = 0.002f;
-	//public float turnSpeed = 200.0f;
-	public Vector3 homePoint = new Vector3(0,0,0);
+    public bool useYAxis = false;
+    public string yAxisName = "Vertical2";
+    public Vector3 homePoint = new Vector3(0,0,0);
 
 	private float currentSpeed;
 	private Vector3 p = new Vector3(0,0,0);
@@ -33,16 +34,14 @@ public class LAMoveWasd : MonoBehaviour {
 		}
 
 		p.x = Input.GetAxis("Horizontal") * Time.deltaTime * currentSpeed;
-		p.y = 0.0f;
-		p.z = Input.GetAxis("Vertical") * Time.deltaTime * currentSpeed;
-
-		//float mX = Input.GetAxis("Mouse X") * Time.deltaTime * turnSpeed;
-		//float mY = Input.GetAxis("Mouse Y") * Time.deltaTime * turnSpeed;
+        if (useYAxis) {
+            p.y = Input.GetAxis(yAxisName) * Time.deltaTime * currentSpeed;
+        } else {
+            p.y = 0f;
+        }
+        p.z = Input.GetAxis("Vertical") * Time.deltaTime * currentSpeed;
 
 		transform.Translate(p.x, p.y, p.z);
-
-		//transform.Rotate(mY, mX, 0.0f);
-		//Debug.Log(mX + " " + mY);	
 
 		if (Input.GetKeyDown(KeyCode.Home)) {
 			transform.position = homePoint;
