@@ -249,6 +249,7 @@ MonoBehaviour:
   latk: {fileID: 1395256924}
   hands: {fileID: 950781423}
   smoothing: 0.5
+  doSmoothing: 1
   startingFrames: 12
 --- !u!114 &1395256924 stripped
 MonoBehaviour:

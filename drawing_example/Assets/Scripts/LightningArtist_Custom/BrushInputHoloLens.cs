@@ -7,6 +7,7 @@ public class BrushInputHoloLens : MonoBehaviour {
     public LightningArtist latk;
     public HoloLensHandTracking.HandsTrackingController hands;
     public float smoothing = 0.5f;
+    public bool doSmoothing = true;
     public int startingFrames = 12;
 
     private bool firstRun = true;
@@ -25,7 +26,11 @@ public class BrushInputHoloLens : MonoBehaviour {
         }
 
         try {
-            latk.target.position = Vector3.Lerp(latk.target.position, hands.lastPos, smoothing);
+            if (doSmoothing) {
+                latk.target.position = Vector3.Lerp(latk.target.position, hands.lastPos, smoothing);
+            } else {
+                latk.target.position = hands.lastPos;
+            }
         } catch (UnityException e) { }
 
         latk.clicked = hands.handPressed;
