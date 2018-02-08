@@ -12,7 +12,7 @@ public class SpawnExample : MonoBehaviour {
     private HoloLensHandTracking.HandsTrackingController handMgr;
 
     private void Awake() {
-        ctl = Camera.main.GetComponent<BasicController>();
+        ctl = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<BasicController>();
         handMgr = GameObject.FindGameObjectWithTag("HandManager").GetComponent<HoloLensHandTracking.HandsTrackingController>();
     }
 
