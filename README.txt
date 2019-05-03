@@ -1,7 +1,5 @@
-Requirements:
-Unity 2017.3
-UWP SDK 10.0.16299.0
-Windows 10 Fall Creators Edition
+Tested on:
+Unity 2018.3
+UWP SDK 10.0.16299.0 (IL2CPP)
+Windows 10 1809
 
-For more setup instructions, see:
-https://n1ckfg.github.io/Hello_Lens/
