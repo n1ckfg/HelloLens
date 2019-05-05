@@ -1,9 +1,0 @@
-[submodule "drawing_example/Assets/HoloToolkit_Custom"]
-	path = drawing_example/Assets/HoloToolkit_Custom
-	url = https://github.com/n1ckfg/HoloToolkit_Custom
-[submodule "spatial_example/Assets/HoloToolkit_Custom"]
-	path = spatial_example/Assets/HoloToolkit_Custom
-	url = https://github.com/n1ckfg/HoloToolkit_Custom
-[submodule "input_example/Assets/HoloToolkit_Custom"]
-	path = input_example/Assets/HoloToolkit_Custom
-	url = https://github.com/n1ckfg/HoloToolkit_Custom
