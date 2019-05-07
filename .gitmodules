@@ -1,0 +1,6 @@
+[submodule "Assets/latkUnity"]
+	path = Assets/latkUnity
+	url = https://github.com/LightningArtist/latkUnity
+[submodule "Assets/HoloToolkit_Custom"]
+	path = Assets/HoloToolkit_Custom
+	url = https://github.com/n1ckfg/HoloToolkit_Custom
