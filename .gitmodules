@@ -4,3 +4,6 @@
 [submodule "Assets/HoloToolkit_Custom"]
 	path = Assets/HoloToolkit_Custom
 	url = https://github.com/n1ckfg/HoloToolkit_Custom
+[submodule "Assets/latkxHoloLens"]
+	path = Assets/latkxHoloLens
+	url = https://github.com/n1ckfg/latkxHoloLens
