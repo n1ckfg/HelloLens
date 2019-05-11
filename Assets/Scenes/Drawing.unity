@@ -353,6 +353,11 @@ PrefabInstance:
       propertyPath: StatusText
       value: 
       objectReference: {fileID: 619971559}
+    - target: {fileID: 114859950904780078, guid: eac7799b0844fcc49a84f4f2dfdcdd2e,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1629289399}
     - target: {fileID: 4585439360537882, guid: eac7799b0844fcc49a84f4f2dfdcdd2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
